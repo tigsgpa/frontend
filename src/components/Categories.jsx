@@ -63,7 +63,7 @@ const Home = () => {
               left: 0,
               width: '100%',
               height: '100%',
-              backgroundImage: url(${tile.img_url}),
+              backgroundImage: `url(${tile.img_url})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               filter: 'brightness(0.6)',
