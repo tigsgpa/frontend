@@ -1,6 +1,5 @@
-import { Button, Box, Typography } from '@mui/material';
-import React, {useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -10,155 +9,159 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    document.body.style.zoom = "90%"; // Set zoom level to 80%
+    document.body.style.zoom = "90%"; // Set zoom level to 90%
     return () => {
       document.body.style.zoom = "100%"; // Reset on component unmount
     };
   }, []);
-  
+
   const tiles = [
     {
       id: 1,
-      title: 'Navigation',
-      description: 'Find shops and navigate easily through the mall.',
+      title: "Navigate the Mall",
+      description: "Find shops and navigate seamlessly through the mall.",
       img_url:
-        'https://images.squarespace-cdn.com/content/v1/64073c3afdb5c4737243d022/277c4047-7c06-4a75-b135-af645a3e13c6/designinternational-lulu+mall+trivandrum-thiruvananthapuram-india-plaza+people.jpg',
-      buttonText: 'Start Navigation',
-      action: () => navigate('/shops'),
+        "https://images.squarespace-cdn.com/content/v1/64073c3afdb5c4737243d022/cbb7f3bd-fa8f-4b8a-9d45-0336e2759184/designinternational-lulu+mall+trivandrum-thiruvananthapuram-india-plaza+and+skylight-cover.jpg",
+      buttonText: "Explore your shop",
+      action: () => navigate("/navi"), // Redirects to /navi
     },
     {
       id: 2,
-      title: 'Food Court',
-      description: 'Discover delicious food options and cuisines.',
+      title: "Explore the Food Court",
+      description: "Discover a variety of cuisines and dining experiences.",
       img_url:
-        'https://img.freepik.com/free-photo/top-view-table-full-delicious-food-composition_23-2149141352.jpg',
-      buttonText: 'Explore Food',
-      action: () => navigate('/explore'),
+        "https://cdn-ijnhp.nitrocdn.com/pywIAllcUPgoWDXtkiXtBgvTOSromKIg/assets/images/optimized/rev-5794eaa/www.jaypeehotels.com/blog/wp-content/uploads/2020/09/chinese-1.jpg",
+      buttonText: "Explore our menu",
+      action: () => navigate("/explore"), // Redirects to /explore
     },
   ];
 
   return (
-    <Box sx={{ width: '100%', overflow: 'hidden' }}>
+    <div
+      style={{
+        display: "flex",
+        marginTop:'-250px',
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        gap: "20px",
+        padding: "20px",
+      }}
+    >
       {tiles.map((tile) => (
-        <Box
+        <div
           key={tile.id}
-          sx={{
-            width: '100%',
-            height: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'relative',
-            cursor: 'pointer',
-            overflow: 'hidden',
-            '&:hover .tile-image': {
-              transform: 'scale(1.1)',
-            },
-            '&:hover .tile-overlay': {
-              opacity: 0.7,
-              background: 'linear-gradient(120deg, rgba(255,0,150,0.7), rgba(0,204,255,0.7))',
-            },
-            '&:hover .tile-content': {
-              transform: 'translateY(0)',
-              opacity: 1,
-            },
+          style={{
+            width: "100%",
+            maxWidth: "350px",
+            height: "400px",
+            position: "relative",
+            backgroundImage: `url(${tile.img_url})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            borderRadius: "15px",
+            overflow: "hidden",
+            display: "flex",
+            alignItems: "flex-end",
+            cursor: "pointer",
+            boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.3)",
+            transition: "transform 0.3s ease, box-shadow 0.3s ease",
           }}
-          onClick={tile.action}
+          onMouseOver={(e) => {
+            e.currentTarget.style.transform = "scale(1.05)";
+            e.currentTarget.style.boxShadow =
+              "0px 15px 30px rgba(0, 0, 0, 0.5)";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.transform = "scale(1)";
+            e.currentTarget.style.boxShadow =
+              "0px 8px 20px rgba(0, 0, 0, 0.3)";
+          }}
         >
-          {/* Parallax Background */}
-          <Box
-            className="tile-image"
-            sx={{
-              position: 'absolute',
+          {/* Transparent Overlay */}
+          <div
+            style={{
+              position: "absolute",
               top: 0,
               left: 0,
-              width: '100%',
-              height: '100%',
-              backgroundImage: `url(${tile.img_url})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              filter: 'brightness(0.6)',
-              transition: 'transform 1.5s ease',
+              width: "100%",
+              height: "100%",
+              background: "rgba(255, 255, 255, 0.2)", // Transparent white overlay
+              backdropFilter: "blur(1px)", // Adds a glass-like effect
             }}
-          />
-          {/* Animated Gradient Overlay */}
-          <Box
-            className="tile-overlay"
-            sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              background: 'linear-gradient(120deg, rgba(0,0,0,0.7), rgba(0,0,0,0.7))',
-              transition: 'background 0.5s ease, opacity 0.5s ease',
-            }}
-          />
+          ></div>
+
           {/* Content */}
-          <Box
-            className="tile-content"
-            sx={{
-              position: 'relative',
-              textAlign: 'center',
-              color: '#fff',
+          <div
+            style={{
               zIndex: 2,
-              transition: 'transform 0.5s ease, opacity 0.5s ease',
-              opacity: 0.9,
-              transform: 'translateY(20px)',
+              padding: "15px",
+              textAlign: "center",
+              color: "white",
+              boxShadow:"100",
+              width: "100%",
+              background: "rgba(0, 0, 0, 0.3)", // Slightly transparent black for contrast
+              backdropFilter: "blur(1px)", // Enhances the glassmorphism effect
+              borderRadius: "10px", // Rounds the edges of the content area
+              margin: "10px",
             }}
           >
-            <Typography
-              variant="h3"
-              sx={{
-                fontWeight: 'bold',
-                marginBottom: 2,
-                textShadow: '2px 2px 10px rgba(0, 0, 0, 0.8)',
-                background: 'linear-gradient(90deg, #ff6e40, #ff3d00)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+            <h2
+              style={{
+                fontWeight: "bold",
+                fontSize: "1.5rem",
+                marginBottom: "10px",
+                textShadow: "1px 1px 8px rgba(0, 0, 0, 0.7)",
               }}
             >
               {tile.title}
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                fontSize: '1.2rem',
-                color: '#ddd',
-                textShadow: '1px 1px 8px rgba(0, 0, 0, 0.6)',
-                marginBottom: 3,
+            </h2>
+            <p
+              style={{
+                fontSize: "1rem",
+                marginBottom: "10px",
+                lineHeight: "1.4",
+                color: "#ddd",
               }}
             >
               {tile.description}
-            </Typography>
-            <Button
-              variant="contained"
-              sx={{
-                backgroundImage: 'linear-gradient(to right, #ff6e40, #ff3d00)',
-                color: '#fff',
-                fontWeight: 'bold',
-                padding: '12px 28px',
-                textTransform: 'none',
-                borderRadius: 50,
-                fontSize: '1rem',
-                transition: 'transform 0.4s ease, box-shadow 0.4s ease',
-                '&:hover': {
-                  backgroundImage: 'linear-gradient(to right, #ff3d00, #ff6e40)',
-                  transform: 'scale(1.1)',
-                  boxShadow: '0 8px 20px rgba(255, 61, 0, 0.4)',
-                },
-              }}
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent triggering the tile's click event
-                tile.action();
-              }}
-            >
-              {tile.buttonText}
-            </Button>
-          </Box>
-        </Box>
+            </p>
+            {/* Single Button */}
+            <div style={{ textAlign: "center", marginTop: "10px" }}>
+              <button
+                style={{
+                  background: "linear-gradient(to right, #660660, #a5076b)", // Updated gradient background
+                  color: "white",
+                  border: "none",
+                  borderRadius: "30px",
+                  padding: "12px 16px",
+                  fontSize: "0.9rem",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                  boxShadow: "0px 8px 20px rgba(165, 7, 107, 0.3)",
+                  transition: "all 0.3s ease",
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  tile.action();
+                }}
+                onMouseOver={(e) =>
+                  (e.target.style.background =
+                    "linear-gradient(to right, #a5076b, #660660)") // Reversed gradient on hover
+                }
+                onMouseOut={(e) =>
+                  (e.target.style.background =
+                    "linear-gradient(to right, #660660, #a5076b)") // Original gradient on mouse out
+                }
+              >
+                {tile.buttonText}
+              </button>
+            </div>
+          </div>
+        </div>
       ))}
-    </Box>
+    </div>
   );
 };
 
