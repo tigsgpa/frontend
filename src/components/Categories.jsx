@@ -40,7 +40,7 @@ const Home = () => {
     <div
       style={{
         display: "flex",
-        marginTop:'-250px',
+        marginTop:'-200px',
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
@@ -119,10 +119,10 @@ const Home = () => {
             </h2>
             <p
               style={{
-                fontSize: "1rem",
-                marginBottom: "10px",
+                fontSize: "1.2rem",
+                marginBottom: "15px",
                 lineHeight: "1.4",
-                color: "#ddd",
+                color: "white",
               }}
             >
               {tile.description}
@@ -136,7 +136,7 @@ const Home = () => {
                   border: "none",
                   borderRadius: "30px",
                   padding: "12px 16px",
-                  fontSize: "0.9rem",
+                  fontSize: "1.1rem",
                   fontWeight: "bold",
                   cursor: "pointer",
                   boxShadow: "0px 8px 20px rgba(165, 7, 107, 0.3)",
