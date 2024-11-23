@@ -44,7 +44,7 @@ const Home = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
+        height: "76vh",
         gap: "20px",
         padding: "20px",
       }}
