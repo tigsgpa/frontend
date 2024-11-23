@@ -30,6 +30,17 @@ const Restaurants = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.zoom = "90%"; // Set zoom level to 80%
+    return () => {
+      document.body.style.zoom = "100%"; // Reset on component unmount
+    };
+  }, []);
+
+  useEffect(() => {
     const fetchRestaurants = async () => {
       setLoading(true);
       setError(null);
