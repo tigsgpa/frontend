@@ -1,10 +1,21 @@
 import { Button, Box, Typography } from '@mui/material';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.zoom = "90%"; // Set zoom level to 80%
+    return () => {
+      document.body.style.zoom = "100%"; // Reset on component unmount
+    };
+  }, []);
+  
   const tiles = [
     {
       id: 1,
